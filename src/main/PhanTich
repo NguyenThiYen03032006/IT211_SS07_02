@@ -1,0 +1,5 @@
+1. Phân tích lý thuyết
+Lý do lỗi: Khuyên thị @Before chỉ chạy xen vào trước phương thức gốc.
+Cơ chế hoạt động: Lệnh System.out.println chỉ in dữ liệu ra bảng điều khiển console.
+Hệ quả: Lệnh in không làm thay đổi luồng xử lý của chương trình. Sau khi in xong, mã nguồn phương thức gốc vẫn tiếp tục chạy bình thường.
+Giải pháp khắc phục: Phải chủ động ném ra một ngoại lệ (RuntimeException). Ngoại lệ sẽ ngắt lập tức luồng chạy (thread) trước khi chạm tới phương thức gốc.
